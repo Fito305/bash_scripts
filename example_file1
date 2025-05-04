@@ -1,0 +1,24 @@
+#!/bin/bash
+
+for file in example_file*; do
+	if [[ "${file}" == "example_file1" ]]; then
+	echo "Skipping the first file"
+	continue
+	fi
+	
+	echo "${RANDOM}" > "${file}"
+done
+
+
+# We start a for loop with the example_file* glob, which will 
+# expand to match the names of all files starting with 
+# example_file in the directory where the script runs.
+# As a result, the loop should iterate over all three file we
+# created earlier. Within the loop, we use string comparison
+# to check whether the filename is equal to example_file1
+# because we want to skip this file and not make changes to it.
+# If the condition is met, we use the continue statement to
+# proceed to the next iteration, leaving the file unmodified.
+# Later in the loop, we use the echo command with the environment
+# variable ${RANDOM} to generate a random number and write it
+# into the file.
