@@ -24,8 +24,7 @@ while read -r line; do
 			wget -q -r -np -R "index.html*" "${url}" -p "${OUTPUT_FOLDER}"
 		fi
 	fi
-done << (cat "${FILE}")
-# done < <(cat "${FILE}")
+done < <(cat "${FILE}")
 
 
 # What if we want to run a scan against a list of URLs to check whether
