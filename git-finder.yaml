@@ -1,0 +1,25 @@
+id: detect-git-repository
+
+
+info:
+	name: Git Respository Finder
+	author: Dolev Farhi and Nick Aleks
+	severity: info
+	tags: git
+
+
+http:
+	- method: GET
+	  path:
+	  	- '{{BASEURL}}/backup/acme-hyper-branding/.git/HEAD'
+		- '{{BASEURL}}/backup/acme-impact-alliance/.git/HEAD'
+	  matchers:
+		- type: word
+		  words:
+		    - "ref: refs/heads/master"
+		  part: body
+
+
+# You can confirm the match by making a curl request to the Git repo at
+# 172.16.10.11:
+# $ curl http://172.16.10.11/backup/acme-hyper-branding/.git/HEAD
